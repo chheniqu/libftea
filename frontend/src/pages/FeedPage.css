@@ -1,0 +1,149 @@
+.feed-page {
+	position: fixed;
+	top: 50px;
+	left: 60px;
+	display: flex;
+	flex-direction: column;
+	width: calc(100vw - 60px);
+	height: calc(100vh - 50px);
+	color: black;
+	align-items: center;
+	overflow-y: auto;
+}
+
+.feed-header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 10px 20px;
+	margin-top: 10px;
+}
+
+.page-name {
+	position: absolute;
+	left: 5vw;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.feed-center {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.feed-tabs {
+	position: relative;
+	display: flex;
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: white;
+}
+
+.feed-tabs button {
+	flex: 1;
+	background-color: transparent;
+	border: none;
+	padding: 10px 20px;
+	font-size: 0.95rem;
+	cursor: pointer;
+	position: relative;
+	z-index: 2;
+	color: black;
+	transition: color 0.2s ease;
+	outline: none;
+	min-width: 140px;
+}
+
+.no-posts-card-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.no-posts-card {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.214);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 15px;
+	width: 750px;
+	align-items: center;
+}
+
+.no-posts-message {
+	margin: 0;
+	color: #666;
+	font-size: 1rem;
+}
+
+.feed-tabs button:hover {
+	background-color: transparent;
+}
+
+.feed-tabs button.active {
+	color: black;
+	font-family: 'Gotham Bold', sans-serif;
+	font-weight: 700;
+}
+
+.tab-indicator {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	transition: transform 0.25s ease;
+	z-index: 1;
+}
+
+.tab-indicator.right {
+	transform: translateX(100%);
+}
+
+@media (max-width: 480px) {
+	.feed-page {
+		left: 0;
+		width: 100vw;
+		padding-left: 68px; /* account for left-menu (60px + 8px gap) */
+		box-sizing: border-box;
+	}
+
+	.feed-center {
+		gap: 8px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.feed-tabs button {
+		min-width: 90px;
+		padding: 8px 10px;
+		font-size: 0.82rem;
+	}
+
+	.no-posts-card {
+		width: 100%;
+	}
+}
+
+@media (max-width: 360px) {
+	.feed-page {
+		left: 0;
+		width: 100vw;
+		padding-left: 68px;
+		box-sizing: border-box;
+	}
+
+	.feed-tabs button {
+		min-width: 80px;
+		padding: 6px 8px;
+		font-size: 0.78rem;
+	}
+}

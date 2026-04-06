@@ -1,0 +1,61 @@
+services:
+  caddy:
+    image: caddy:alpine
+    ports:
+      - "4433:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./certs:/certs
+    depends_on:
+      - backend
+      - frontend
+  db:
+    image: postgres:16
+    container_name: postgres
+    env_file:
+      - ./backend/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+      network: host
+    container_name: backend
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+    expose:
+      - "3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run start:dev
+
+  frontend:
+    build:
+      context: ./frontend
+      network: host
+    container_name: frontend
+    expose:
+      - "5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=https://localhost:4433
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: mailpit
+    ports:
+      - "1026:1025"
+      - "8026:8025"
+
+volumes:
+  postgres_data:
