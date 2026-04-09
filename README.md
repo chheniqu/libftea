@@ -10,6 +10,27 @@ The platform also features a tournament system based on themed challenges. Admin
 A notification system keeps users informed in real time about interactions related to their activity, such as likes, comments, or tournament results.
 The entire application is designed to provide a smooth, interactive, and community-driven user experience.
 
+## Live Demo (Frontend Showcase)
+
+A public version of the project is available online in order to allow recruiters and reviewers to explore the interface and user experience of the platform without needing to install the project locally.
+
+### Live demo:
+
+https://opheliamarboeuf.github.io/transcendence
+
+This hosted version runs frontend-only and is intended as a visual showcase of the application.
+
+For security and moderation reasons, the backend services are intentionally disabled in this environment. As a result:
+- user registration and authentication are disabled
+- posting outfits or uploading images is not possible
+- social interactions (likes, comments, messaging, etc.) are not active
+
+The goal of this demo is to provide a guided preview of the platform’s design, navigation, and main features.
+
+After landing on the homepage, clicking “Log in” will redirect you directly into the application interface, allowing you to explore the different pages and UI components as they would appear in a real session.
+
+To experience the full functionality of the project (backend, database, real-time features, authentication, etc.), please run the application locally by following the installation instructions below.
+
 ## Technical Stack
 
 The combination of React and NestJS with TypeScript on both ends was chosen to ensure consistently and reduce context-switching for the team. PostgreSQL paired with Prisma gave us a robust and developer-friendly data layer, while Docker ensured that the project ran identically on every machine regardless of local configuration.
@@ -34,98 +55,6 @@ Database access was managed through Prisma, an ORM that simplified query writing
 #### Infrastructure
 
 The project was containerized using Docker, making it easy to set up consistent development environments across the team and simplifying future deployment.
-
-## Database Schema
-
-#### Overview
-
-The application is built on a relational database (PostgreSQL) structured around core social network entities such as users, posts, interactions, and tournaments.
-The schema is designed to ensure:
-
-- data integrity through strong relations and constraints
-- scalability for social features (likes, comments, friendships, messaging)
-- support for advanced modules such as moderation and tournaments
-
-#### Core entities and relationships
-
-#### User:
-
-- Central entity of the application
-- Stores authentication data, role (USER, ADMIN, MOD), and account status (banned)
-- Relations: posts (one-to-many), comments (one-to-many), likes (one-to-many), friendships (self-relation), messages and conversations, notifications, reports and moderation logs
-
-#### Post:
-
-- Represents an outfit shared by a user
-- Contains image, caption, title, timestamps
-- Relations: belongs to one user (author), has many likes and comments, can participate in a tournament (BattleParticipant), can be reported or hidden
-
-#### Comment:
-
-- Linked to a post and a user
-- Supports nested comments via a self-relation (replies system)
-
-#### Like:
-
-- Connects a user to a post
-- Enforced constraint: one like per user per post (@@unique[userId, postId])
-
-#### Friendship:
-
-- Self-relation between users
-- Includes status (PENDING, ACCEPTED, BLOCKED)
-- Enforces uniqueness between two users
-
-#### Conversation & Message:
-
-- Messaging system between users
-- A conversation contains multiple messages
-- Supports real-time communication features
-
-#### Battle:
-
-- Represents a tournament
-- Key fields: theme, startsAt, endsAt, status (UPCOMING, ACTIVE, FINISHED), winnerId (linked to User)
-
-#### BattleParticipant:
-
-- Junction table linking: a user, a post, a tournament
-- Enforces:
-  one participation per user per tournament (@@unique[battleId, userId])
-
-#### Report:
-
-- Allows users to report posts or other users
-- Includes: report type (SPAM, HARASSMENT, etc.), status (PENDING, ACCEPTED, REJECTED)
-- Linked to: reporter (User), target (User or Post), moderator handling the report
-
-#### ModerationLog:
-
-- Stores all moderation actions (ban, delete, role changes, etc.)
-- Ensures traceability with: actor (admin/mod), target (user, post, or tournament)
-
-#### Notification:
-
-- Stores user notifications
-- Includes: type (LIKE, COMMENT, BATTLE_WIN, etc.), read status,optional metadata (JSON for flexibility)
-
-#### PostHiddenForUser / UserHiddenForUser:
-
-- Allow users to hide posts or other users
-- Implemented through junction tables with uniqueness constraints
-
-#### Additional entities:
-
-- Profile: stores user profile data (avatar, bio, cover)
-- Tag / PostTag: tagging system for posts (many-to-many relationship)
-
-#### Key design choices:
-
-- Strong use of relations to model a real social network structure
-- Junction tables (BattleParticipant, PostTag, Hidden entities) to handle many-to-many relationships
-- Database constraints (@@unique) to enforce business rules (e.g. one like per post, one participation per tournament)
-- Enums to standardize states (roles, reports, tournament lifecycle, notifications)
-- Soft deletion patterns (deletedAt, bannedDeletion) to preserve data integrity while hiding content
 
 ## Features List
 
@@ -226,6 +155,98 @@ Real-time notifications for:
 Privacy Policy page (EN / FR / JP)
 Terms of Service page (EN / FR / JP)
 Accessible links from login and registration pages
+
+## Database Schema
+
+#### Overview
+
+The application is built on a relational database (PostgreSQL) structured around core social network entities such as users, posts, interactions, and tournaments.
+The schema is designed to ensure:
+
+- data integrity through strong relations and constraints
+- scalability for social features (likes, comments, friendships, messaging)
+- support for advanced modules such as moderation and tournaments
+
+#### Core entities and relationships
+
+#### User:
+
+- Central entity of the application
+- Stores authentication data, role (USER, ADMIN, MOD), and account status (banned)
+- Relations: posts (one-to-many), comments (one-to-many), likes (one-to-many), friendships (self-relation), messages and conversations, notifications, reports and moderation logs
+
+#### Post:
+
+- Represents an outfit shared by a user
+- Contains image, caption, title, timestamps
+- Relations: belongs to one user (author), has many likes and comments, can participate in a tournament (BattleParticipant), can be reported or hidden
+
+#### Comment:
+
+- Linked to a post and a user
+- Supports nested comments via a self-relation (replies system)
+
+#### Like:
+
+- Connects a user to a post
+- Enforced constraint: one like per user per post (@@unique[userId, postId])
+
+#### Friendship:
+
+- Self-relation between users
+- Includes status (PENDING, ACCEPTED, BLOCKED)
+- Enforces uniqueness between two users
+
+#### Conversation & Message:
+
+- Messaging system between users
+- A conversation contains multiple messages
+- Supports real-time communication features
+
+#### Battle:
+
+- Represents a tournament
+- Key fields: theme, startsAt, endsAt, status (UPCOMING, ACTIVE, FINISHED), winnerId (linked to User)
+
+#### BattleParticipant:
+
+- Junction table linking: a user, a post, a tournament
+- Enforces:
+  one participation per user per tournament (@@unique[battleId, userId])
+
+#### Report:
+
+- Allows users to report posts or other users
+- Includes: report type (SPAM, HARASSMENT, etc.), status (PENDING, ACCEPTED, REJECTED)
+- Linked to: reporter (User), target (User or Post), moderator handling the report
+
+#### ModerationLog:
+
+- Stores all moderation actions (ban, delete, role changes, etc.)
+- Ensures traceability with: actor (admin/mod), target (user, post, or tournament)
+
+#### Notification:
+
+- Stores user notifications
+- Includes: type (LIKE, COMMENT, BATTLE_WIN, etc.), read status,optional metadata (JSON for flexibility)
+
+#### PostHiddenForUser / UserHiddenForUser:
+
+- Allow users to hide posts or other users
+- Implemented through junction tables with uniqueness constraints
+
+#### Additional entities:
+
+- Profile: stores user profile data (avatar, bio, cover)
+- Tag / PostTag: tagging system for posts (many-to-many relationship)
+
+#### Key design choices:
+
+- Strong use of relations to model a real social network structure
+- Junction tables (BattleParticipant, PostTag, Hidden entities) to handle many-to-many relationships
+- Database constraints (@@unique) to enforce business rules (e.g. one like per post, one participation per tournament)
+- Enums to standardize states (roles, reports, tournament lifecycle, notifications)
+- Soft deletion patterns (deletedAt, bannedDeletion) to preserve data integrity while hiding content
 
 ## Individual Contributions
 
