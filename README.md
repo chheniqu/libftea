@@ -12,42 +12,6 @@ The platform also features a tournament system based on themed challenges. Admin
 A notification system keeps users informed in real time about interactions related to their activity, such as likes, comments, or tournament results.
 The entire application is designed to provide a smooth, interactive, and community-driven user experience.
 
-## Team Information
-
-#### chheniqu
-
-Product Owner (PO) Defined the product vision and concept of Libftea as a fashion social network. Designed the visual identity and UI/UX direction. Created the Prisma database schema. Responsible for feature prioritization and validation of completed work.
-
-#### armarboe
-
-Technical Lead / Architect Defined the technical architecture and chose the technology stack (React/TypeScript, NestJS, Prisma, PostgreSQL). Set up the project structure, organized the Trello board, and created reusable components shared across the application. Ensured code quality and reviewed critical changes.
-
-#### aroualid
-
-Developer Responsible for implementing key features and modules within the application, adapting quickly to evolving technical requirements. Wrote clean, efficient code for assigned features across the stack. Actively participated in peer code reviews, tested implementations to ensure application reliability, and maintained clear documentation of their work for the team.
-
-#### lshiina-
-
-Project Manager / Scrum Master Facilitated team coordination and planning sessions. Tracked progress and deadlines. Ensured communication within the team and managed blockers.
-
-## Project Management
-
-#### Work organization
-
-The team followed an iterative and collaborative workflow throughout the project.
-Weekly meetings were held to review overall progress, discuss blockers, and adjust priorities. During these meetings, tasks were redistributed based on each member’s progress and the current needs of the project.
-At the beginning of the project, each team member was assigned a major module to take ownership of, ensuring clear responsibility and deeper technical involvement. However, the workflow remained flexible, allowing collaboration and mutual support when needed.
-Additionally, during the early stages of development, the team worked in the same cluster environment, which facilitated real-time communication, quick problem-solving, and efficient coordination.
-
-#### Project management tools
-
-GitHub: used for version control, pull requests, and issue tracking
-Trello: used for task organization, backlog management, and progress tracking
-
-#### Communication
-
-Discord: main communication channel for daily discussions, quick questions, and coordination
-
 ## Technical Stack
 
 The combination of React and NestJS with TypeScript on both ends was chosen to ensure consistently and reduce context-switching for the team. PostgreSQL paired with Prisma gave us a robust and developer-friendly data layer, while Docker ensured that the project ran identically on every machine regardless of local configuration.
