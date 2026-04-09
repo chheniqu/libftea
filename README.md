@@ -1,5 +1,3 @@
-_This project has been created as part of the 42 curriculum by armarboe, chheniqu, aroualid, and lshiina-._
-
 ## Description
 
 Our project, Libftea, is a social platform designed for fashion enthusiasts who want to share their style and connect with a like-minded community. Users can post outfit photos, interact with friends and other fashion lovers, and engage with content through likes and comments, creating an interactive and inspiring space for self-expression through clothing.
@@ -131,7 +129,7 @@ The schema is designed to ensure:
 
 ## Features List
 
-#### Landing & Authentication (armarboe, chheniqu)
+#### Landing & Authentication (Ophélia, Charlotte)
 
 - Landing page presenting the platform, its concept, and key features
 - User registration with email and password
@@ -141,7 +139,7 @@ The schema is designed to ensure:
 - Form validation and error handling
 - JWT-based authentication and protected routes
 
-#### User Profile (armarboe)
+#### User Profile (Ophélia)
 
 - Personal profile page displaying user information
 - Avatar and cover image upload
@@ -149,7 +147,7 @@ The schema is designed to ensure:
 - Display of user's posts
 - Access to profile settings
 
-#### Posts (armarboe)
+#### Posts (Ophélia)
 
 - Create a post with image, title, and caption
 - Edit and delete own posts
@@ -157,28 +155,28 @@ The schema is designed to ensure:
 - Global feed (timeline) displaying posts
 - Ability to hide posts from specific users
 
-#### Likes & Comments (lshiina-)
+#### Likes & Comments (Léonore)
 
 - Like and unlike posts
 - Comment on posts
 - Reply to comments (nested comment system)
 - Delete own comments
 
-#### Friends (lshiina-, armaboe)
+#### Friends (Léonore, Ophélia)
 
 - Send, accept, and reject friend requests
 - Block other users
 - Friends list management
 - View online status of friends
 
-#### Chat (aroualid)
+#### Chat (Ari)
 
 - Private conversations between users
 - Real-time messaging using WebSockets
 - Persistent message history
 - Invitation system to invite users to join tournaments via messaging
 
-#### Tournament / Battle (chheniqu)
+#### Tournament / Battle (Charlotte)
 
 - Create tournaments with theme, description, rules, max players, and start/end dates (admin only)
 - Plan tournaments in advance
@@ -188,7 +186,7 @@ The schema is designed to ensure:
 - Automatic winner selection at the end of the tournament
 - Winner highlight (“Last week’s winner”) displayed in the next tournament
 
-#### Notifications (lshiina-)
+#### Notifications (Léonore)
 
 Real-time notifications for:
 
@@ -200,7 +198,7 @@ Real-time notifications for:
 - role changes (promotion/demotion)
 - Mark notifications as read
 
-#### Internationalisation (i18n) (lshiina-, chheniqu)
+#### Internationalisation (i18n) (Léonore, Charlotte)
 
 - Full UI translation in:
   - English
@@ -208,7 +206,7 @@ Real-time notifications for:
   - Japanese
 - Language switcher available in the interface
 
-#### Moderation & Admin (armarboe)
+#### Moderation & Admin (Ophélia)
 
 - Role-based access control (USER, MOD, ADMIN)
 - Report system for posts and users:
@@ -223,15 +221,13 @@ Real-time notifications for:
 - Promote and demote users (MOD / ADMIN)
 - Moderation logs ensuring full action traceability
 
-#### Legal (lshiina-, chheniqu)
+#### Legal (Léonore, Charlotte)
 
 Privacy Policy page (EN / FR / JP)
 Terms of Service page (EN / FR / JP)
 Accessible links from login and registration pages
 
 ## Individual Contributions
-
-### chheniqu
 
 #### Fashion Tournament System
 
