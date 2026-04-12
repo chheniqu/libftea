@@ -16,20 +16,18 @@ A public version of the project is available online in order to allow recruiters
 
 ### Live demo:
 
-https://opheliamarboeuf.github.io/transcendence
+https://opheliamarboeuf.github.io/libftea
 
 This hosted version runs frontend-only and is intended as a visual showcase of the application.
 
 For security and moderation reasons, the backend services are intentionally disabled in this environment. As a result:
 - user registration and authentication are disabled
-- posting outfits or uploading images is not possible
-- social interactions (likes, comments, messaging, etc.) are not active
 
 The goal of this demo is to provide a guided preview of the platform’s design, navigation, and main features.
 
-After landing on the homepage, clicking “Log in” will redirect you directly into the application interface, allowing you to explore the different pages and UI components as they would appear in a real session.
+After landing on the homepage, you will be redirected to a user selection page where you can choose from predefined accounts. This allows immediate access to the application interface and enables you to explore the different pages and UI components as they would appear in a real user session.
 
-To experience the full functionality of the project (backend, database, real-time features, authentication, etc.), please run the application locally by following the installation instructions below.
+To experience the full functionality of the project (backend, database, real-time features, authentication, etc...), please run the application locally by following the installation instructions below.
 
 ## Technical Stack
 
